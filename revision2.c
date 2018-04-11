@@ -31,10 +31,10 @@ int main()
 	}
 	for(i=0;i<num;i++)										
 		pro[i].status = 0;																		
-	int time = 0;			
-	int count = 0, count2 = 0;
+	int time1 = 0;			
+	int count1 = 0, count2 = 0;
 	i=0;
-	while(count!=num)
+	while(count1!=num)
 	{
 		if(pro[i].status!=1 && pro[i].status!=2)
 		{	
@@ -48,10 +48,10 @@ int main()
 					printf("Process P %d",pro[j].p_id," it is proceesss");
 					pro[i].status = 2;
 					count2++;
-					time += pro[j].bursttime;
+					time1 += pro[j].bursttime;
 					pro[j].status = 1;
 					printf("Process P %d ",pro[j].p_id," is completely processed");
-					count += 2;
+					count1 += 2;
 					break;
 				}
 			}
