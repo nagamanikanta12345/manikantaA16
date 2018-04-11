@@ -32,12 +32,11 @@ int main()
 		scanf("%d",&pro[i].priority);
 	}
 	for(i=0;i<num;i++)										
-		pro[i].status = 0;													
-	//cout<<"Processing first queue using priority scheduling"<<endl<<endl<<endl;					
-	int time = 0;			
-	int count = 0, count2 = 0;
+		pro[i].status = 0;																	
+	int time1 = 0;			
+	int count1 = 0, count2 = 0;
 	i=0;
-	while(count!=num)
+	while(count1!=num)
 	{
 		if(pro[i].status!=1 && pro[i].status!=2)
 		{	
@@ -51,47 +50,44 @@ int main()
 					printf("Process P %d",pro[j].p_id," it is proceesss");
 					pro[i].status = 2;
 					count2++;
-					time += pro[j].bursttime;
+					time1 += pro[j].bursttime;
 					pro[j].status = 1;
 					printf("Process P %d ",pro[j].p_id," is completely processed");
-					//order_execution.push(p[j].p_id);
-					count += 2;
+					count1 += 2;
 					break;
 				}
 			}
 			if(pro[i].status != 2)
 			{
-				time += pro[i].bursttime;
+				time1 += pro[i].bursttime;
 				pro[i].status = 1;
 				printf("Process P %d ",pro[i].p_id," is completely processed");
-			//	order_execution.push(p[i].p_id);
-				count++;
+				count1++;
 			}
 		}
 		i = (i+1)%num;
 	}
 	int tq = 2;
-	time = 0;
-	count = 0;
+	time1 = 0;
+	count1 = 0;
 	printf("\nProcessing second queue using round robin scheduling");
 	i=0;
-	while(count != count2)
+	while(count1 != count2)
 	{
 		if(pro[i].status == 2)
 		{
 			if(pro[i].bursttime<2)
 			{
 				pro[i].bursttime -= 1;
-				time += 1;
+				time1 += 1;
 				pro[i].status = 1;
-				printf("Completed executing P %d",pro[i].p_id," at %d",time," time-units");
-				//order_execution.push(p[i].p_id);
-				count++; 
+				printf("Completed executing P %d",pro[i].p_id," at %d",time1," time-units");
+				count1++; 
 			}
 			else
 			{
 				pro[i].bursttime -= 2;
-				time += tq;
+				time1 += tq;
 				printf("Processing P %d",pro[i].p_id," for 2 time-units");
 			}
 		}
